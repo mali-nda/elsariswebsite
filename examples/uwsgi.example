@@ -1,0 +1,25 @@
+[uwsgi]
+# https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/uwsgi/
+
+# the base directory (full path)
+chdir           = /opt/pde
+
+# Django's wsgi file
+module          = elaris.wsgi
+
+# the virtualenv (full path)
+home            = /opt/pde/venv
+
+# process-related settings
+master          = true
+
+# maximum number of worker processes
+processes       = 8
+threads         = 2
+enable-threads  = True
+
+# the socket (use the full path to be safe
+socket          = /opt/pde/uwsgi/uwsgi.sock
+
+# ... with appropriate permissions - may be needed
+chmod-socket    = 666

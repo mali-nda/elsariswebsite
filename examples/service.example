@@ -1,0 +1,17 @@
+[Unit]
+Description=pde-uWSGI-instance
+After=network.target postgresql-13.service
+
+[Service]
+User=centos
+Group=nginx
+WorkingDirectory=/opt/pde
+Environment="PATH=/opt/pde/venv/bin"
+ExecStart=/opt/pde/venv/bin/uwsgi --ini /opt/pde/uwsgi/uwsgi.ini
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
